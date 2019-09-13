@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>XHR Client Test</title>
+    <meta charset="utf-8">
+    <script src="/lib/axios/dist/axios.js"></script>
+</head>
+<body>
+<h1>HTTP-Client-Test</h1>
+<script>
+    const CODE = 500;
+    const URL = `/echo/${CODE}`;
+    //const METHOD = "get";
+    // FETCH
+    (async function () {
+        fetch(URL)
+            .then(console.log)
+            .catch(console.error);
+    })();
+
+    // AXIOS
+    (async function () {
+        axios.get(URL)
+            .then(console.log)
+            .catch(console.error);
+    })();
+
+    //Oldschool - XHR
+    (async function () {
+
+    })();
+
+</script>
+</body>
+</html>
