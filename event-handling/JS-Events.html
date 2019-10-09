@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BiteSize JS - Bubbling Events</title>
+
+    <style> 
+    body{
+      background-color: #08AEEA;
+      background-image: linear-gradient(90deg, #08AEEA 0%, #2AF598 100%);
+
+
+    }
+        a{ font-size: 20px; }
+        .panel-body{ font-size: 16px; }
+        ul li { margin: 5px 0px;}
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        <h1 style="color: white;">Bubbling Javascript Events</h1>
+
+        <div class="panel-group" id="accordion" role="tablist" >
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Was sind Events und welche Typen gibt es? 
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                     <ul>
+                        <li> Aktionen, auf die ich als Entwickler reagieren kann. Und zwar so, wie ich als Entwickler es vorgesehen habe!</li>
+                        <li> Werden technisch als "Messages" auf einen Stapel gelegt und FIFO abgearbeitet</li>
+                        <li> Events werden seriell abgearbeitet. Solange ein Event abgearbeitet wird, geht nix anderes -> blocking</li>
+                        <li> Unschöne Effekte für den User --> "Ein Script auf dieser Seite reagiert nicht mehr" :(</li>
+                        <li> Events gibt es auch in anderen Sprachen, nicht nur JS - z.B.: C </li>
+                        <li> In manchen Situationen benötigt man kein Javascript! -> zum Beispiel onMouseOver -> CSS :hover </li>
+                        <li> Es gibt viele verschiedene :-) Die "gebräuchlichsten": 
+                            <ul>
+                                <li>Klick-Event (onclick)</li>
+                                <li>Hover-Event (onmouseover)</li>
+                                <li>Input-Event (oninput)</li>
+                                <li>Change-Event (onchange)</li>
+                                <li>Submit-Event (onsubmit)</li>
+                            </ul>
+                        </li>
+                     </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-------------------------->
+
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                       Vermehrung und Standardverhalten
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <ul>
+                            <li>
+                                Vermehrung = Propagation
+                           <ul>
+                            <li>Was ist <b>Bubbling</b>
+                                <ul>
+                                    <li>Von unten nach oben -> vom innersten zum äußersten Element</li>
+                                    <li>
+                                        <code>
+                                            let clickFn = function(e){
+                                                console.log("click");
+                                            }
+                                            <br>
+                                            target.addEventListener('click',clickFn);
+                                        </code>
+                                    </li>
+                                </ul>
+                            
+                            </li>
+
+                            <li>Was ist <b>Capture</b>
+                                <ul>
+                                    <li>Von oben nach unten -> vom äußersten zum innersten Element</li>
+                                    <li>
+                                        <code>
+                                            let clickFn = function(e){
+                                                console.log("click");
+                                            }
+                                            <br>
+                                            target.addEventListener('click',clickFn,true);
+                                        </code>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li> Ich kann es stoppen?! mit <code>event.stopPropagation();</code></li>
+                        </ul>
+                        </li>
+                            <li>Standardverhalten 
+                                <ul>
+                                    <li> Ist definiert (z.B. Klick oder Form-Submit)</li>
+                                    <li> Kann unterbrochen werden, mit <code>event.preventDefault();</code> z.B. für Validierung bei Formularen</li>
+                                    <li> Dann muss sich der Entwickler aber auch um die Korrektheit kümmern.</li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-------------------------->
+
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Wie nutze ich Events?
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <a target="_blank" href="https://codepen.io/dramaturco/pen/YzKgmEN"> CodePen </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+              
+              <div>
+                <a target="_blank" style="font-size: 14px" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events">MDN: Events (allg.)</a> | 
+                <a target="_blank" style="font-size: 14px" href="https://developer.mozilla.org/en-US/docs/Web/Events">MDN: Eventtypen</a> | 
+                <a target="_blank" style="font-size: 14px" href="https://dev.to/clickys/bubble-vs-capture--3b19">Dev.to: Bubble vs Capture</a> |
+                <a target="_blank" style="font-size: 14px" href="http://youmightnotneedjs.com/">you might not need JS</a> |
+                <a target="_blank" style="font-size: 14px" href="https://medium.com/front-end-weekly/javascript-event-loop-explained-4cd26af121d4/">Medium: JS Loops</a> |
+                
+                
+            </div>
+    </div>
+
+
+  
+<script>
+
+    
+    $('.collapse').collapse()
+</script>
+</body>
+</html>
