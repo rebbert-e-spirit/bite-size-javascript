@@ -62,6 +62,70 @@
                   </div>
                 </div>
 
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingOneA">
+                    <h4 class="panel-title">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOneA" aria-expanded="false" aria-controls="collapseOneA">
+                      	Verwendung 
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOneA" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <pre><code>
+const form = document.querySelector("#exampleForm")
+form.addEventListener("click", function(event) {
+    alert("target = " + event.target.tagName + ", this=" + this.tagName);
+});</code></pre>
+
+
+                        <style>
+                            form#exampleForm {
+                                background-color: green;
+                                position: relative;
+                                width: 150px;
+                                height: 150px;
+                                text-align: center;
+                                cursor: pointer;
+                            }
+
+                            #exampleForm div {
+                                background-color: blue;
+                                position: absolute;
+                                top: 25px;
+                                left: 25px;
+                                width: 100px;
+                                height: 100px;
+                            }
+
+                            #exampleForm p {
+                                background-color: red;
+                                position: absolute;
+                                top: 25px;
+                                left: 25px;
+                                width: 50px;
+                                height: 50px;
+                                line-height: 50px;
+                                margin: 0;
+                            }
+                        </style>
+                     <form id="exampleForm">FORM
+                        <div>DIV
+                          <p>P</p>
+                        </div>
+                      </form>
+
+                        <script>
+                            const form = document.querySelector("#exampleForm")
+
+                            form.addEventListener("click", function(event) {
+                                alert("target = " + event.target.tagName + ", this=" + this.tagName);
+                            });
+                        </script>
+
+                    </div>
+                  </div>
+                </div>
                 <!-------------------------->
 
                 <div class="panel panel-default">
@@ -136,6 +200,7 @@
                   </div>
                   <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
+                        <a target="_blank" href="https://codepen.io/ztiromoritz/pen/mddJmPv"> CodePen (Blank) </a>
                         <a target="_blank" href="https://codepen.io/dramaturco/pen/YzKgmEN"> CodePen </a>
                     </div>
                   </div>
